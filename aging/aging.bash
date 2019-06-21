@@ -1,20 +1,35 @@
 #!/bin/bash -u
 
+# Description
+#   Main script of aging test.
+#   You need other scripts below when executing this script.
+#        + measure.bash
+#        + get-ipmi.bash
+
 test_time="86400"
 
-# get info
-thread=`grep '^processor[^:]*:' /proc/cpuinfo | wc -l`
-mem=`grep --max-count=1 '^MemTotal:' /proc/meminfo | awk '{ print $2 }'`
-mem_90=`echo "${mem} * 0.9" | bc | cut -d. -f1`
+## get info
+#thread=`grep '^processor[^:]*:' /proc/cpuinfo | wc -l`
+#mem=`grep --max-count=1 '^MemTotal:' /proc/meminfo | awk '{ print $2 }'`
+#mem_90=`echo "${mem} * 0.9" | bc | cut -d. -f1`
 
 # main command
-LOAD_CMS="stress --cpu ${thread} --vm 1 --vm-keep --vm-bytes ${mem_90} --hdd 2 --hdd-bytes 10G --timeout ${test_time}s &" 
-## On the client, the command below is executed.
-##      $ iperf -c 172.31.13.47 -t $test_time
-#LOAD_NIC="iperf -s"
+#LOAD_CMS="stress --cpu ${thread} --vm 1 --vm-keep --vm-bytes ${mem_90} --hdd 2 --hdd-bytes 10G --timeout ${test_time}s &" 
+IPMI_VAL="/var/tmp/load/aging/get-ipmi.bash"
+
+MEASURE () {
+    MEASURE="/var/tmp/load/aging/measure.bash"
+
+    for i in {1..2}
+    do
+        eval ${MEASURE}
+        sleep 43200
+    done
+}
 
 # main process
-#${LOAD_CMS} & ${LOAD_NIC}
-eval ${LOAD_CMS}  
+sleep 86400 &
+sleep 300 
+eval ${IPMI_VAL} & MEASURE
 
 exit 0

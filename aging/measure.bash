@@ -11,7 +11,7 @@ for DIR in mpstat vmstat iostat loadavg
 do 
     if [ ! -d /var/log/load/aging/$DIR ]
     then
-        mkdir /var/log/load/aging/$DIR 
+        mkdir -p /var/log/load/aging/$DIR 
     fi
 done
 
