@@ -18,11 +18,11 @@ test_time="86400"
 IPMI_VAL="/var/tmp/load/aging/get-ipmi.bash"
 
 MEASURE () {
-    MEASURE="/var/tmp/load/aging/measure.bash"
+    measure="/var/tmp/load/aging/measure.bash"
 
     for i in {1..2}
     do
-        eval ${MEASURE}
+        eval ${measure}
         sleep 43200
     done
 }
