@@ -28,8 +28,7 @@ MEASURE () {
 }
 
 # main process
-sleep 86400 &
-sleep 300 
+sleep 86400 & sleep 300 
 eval ${IPMI_VAL} & MEASURE
 
 exit 0
