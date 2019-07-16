@@ -10,10 +10,10 @@ while [ `date +%Y%m%d%H%M` -le "$end" ]
 do
     tmp_file=`mktemp /var/log/load/ipmi_tmp.XXX`    
 
-    log_date=`date '+%Y%m%d'`
+    #log_date=`date '+%Y%m%d'`
     log_time=`date '+%H%M'`
 
-    echo "[${log_date}] | [${log_time}]" > $tmp_file
+    echo "[YYYYMMDD] | [${log_time}]" > $tmp_file
     ipmitool sdr list full | awk -F'|' -v OFS='|' '{print $1,$2}' >> $tmp_file
 
     if [ -s $file ]
@@ -21,7 +21,7 @@ do
         # If the file is not empty (already the result is written),
         cp_file=`mktemp /var/log/load/ipmi_tmp.XXX`    
 
-	    cat  $file > $cp_file
+	cat  $file > $cp_file
         join -t '|' $cp_file $tmp_file > $file
 
         rm -f $cp_file
