@@ -6,12 +6,16 @@ FILE="/var/log/load/reboot_dir/test-rb_${F_DATE}.log"
 
 num_line=`wc -l $FILE`
 
-if [ $num_line -lt 100 ]
+if [ ! -s $FILE ]
 then
-    CLK=`cat /sys/devices/system/clocksource/clocksource0/current_clocksource`
-    echo "[$DATE]: $CLK" >> $FILE
+    if [ $num_line -ge 100 ]
+    then
+        echo "already rebooted 100 times. finished this script." >> $FILE
+        exit 
+    fi
+fi    
 
-    reboot
-else
-    echo "already rebooted 100 times. finished this script." >> $FILE
-fi
+CLK=`cat /sys/devices/system/clocksource/clocksource0/current_clocksource`
+echo "[$DATE]: $CLK" >> $FILE
+
+reboot
