@@ -6,7 +6,7 @@ FILE="/var/log/load/reboot_dir/test-rb_${F_DATE}.log"
 
 num_line=`wc -l $FILE`
 
-if [ ! -s $FILE ]
+if [ -s $FILE ]
 then
     if [ $num_line -ge 100 ]
     then
