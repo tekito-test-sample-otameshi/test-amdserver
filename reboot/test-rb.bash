@@ -4,7 +4,7 @@ DATE=`date '+%F %R'`
 F_DATE=`date '+%Y%m%d'`
 FILE="/var/log/load/reboot_dir/test-rb_${F_DATE}.log"
 
-num_line=`wc -l $FILE`
+num_line=`cat $FILE | wc -l`
 
 if [ -s $FILE ]
 then
