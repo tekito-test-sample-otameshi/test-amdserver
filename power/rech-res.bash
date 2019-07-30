@@ -1,7 +1,6 @@
 #!/bin/bash -u
 
 start=`date '+%F %R'`
-end=`date -d "1 day ${start}" '+%Y%m%d%H%M'` 
 
 file_date=`date '+%Y%m%d'`
 file="/var/log/load/${file_date}.log"
