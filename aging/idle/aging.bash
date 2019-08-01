@@ -8,13 +8,7 @@
 
 test_time="86400"
 
-## get info
-#thread=`grep '^processor[^:]*:' /proc/cpuinfo | wc -l`
-#mem=`grep --max-count=1 '^MemTotal:' /proc/meminfo | awk '{ print $2 }'`
-#mem_90=`echo "${mem} * 0.9" | bc | cut -d. -f1`
-
 # main command
-#LOAD_CMS="stress --cpu ${thread} --vm 1 --vm-keep --vm-bytes ${mem_90} --hdd 2 --hdd-bytes 10G --timeout ${test_time}s &" 
 IPMI_VAL="/var/tmp/load/aging/get-ipmi.bash"
 
 MEASURE () {
@@ -30,5 +24,7 @@ MEASURE () {
 # main process
 sleep 86400 & sleep 300 
 eval ${IPMI_VAL} & MEASURE
+
+cat /var/log/messages > /var/log/load/aging/messages_`date +%Y%m%d`.log
 
 exit 0
