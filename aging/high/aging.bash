@@ -15,10 +15,10 @@ mem_90=`echo "${mem} * 0.9" | bc | cut -d. -f1`
 
 # main command
 LOAD_CMS="stress --cpu ${thread} --vm 1 --vm-keep --vm-bytes ${mem_90}kb --hdd 2 --hdd-bytes 10G --timeout ${test_time}s &" 
-IPMI_VAL="/var/tmp/load/aging/get-ipmi.bash"
+IPMI_VAL="/var/tmp/load/test-amdserver/aging/get-ipmi.bash"
 
 MEASURE () {
-    measure="/var/tmp/load/aging/measure.bash"
+    measure="/var/tmp/load/test-amdserver/aging/measure.bash"
 
     for i in {1..2}
     do
