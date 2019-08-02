@@ -1,7 +1,7 @@
 #!/bin/bash -u
 
 # recording files
-log_dir="/var/log/load/aging"
+log_dir="/home/load/aging"
 mpstat_f="${log_dir}/mpstat/mpstat_`date +%Y%m%d%H%M`.log"
 vmstat_f="${log_dir}/vmstat/vmstat_`date +%Y%m%d%H%M`.log"
 iostat_f="${log_dir}/iostat/iostat_`date +%Y%m%d%H%M`.log"
@@ -9,9 +9,9 @@ loadavg_f="${log_dir}/loadavg/loadavg_`date +%Y%m%d%H%M`.log"
 
 for DIR in mpstat vmstat iostat loadavg
 do 
-    if [ ! -d /var/log/load/aging/$DIR ]
+    if [ ! -d /home/load/aging/$DIR ]
     then
-        mkdir -p /var/log/load/aging/$DIR 
+        mkdir -p /home/load/aging/$DIR 
     fi
 done
 

@@ -2,7 +2,7 @@
 
 DATE=`date '+%F %R'`
 F_DATE=`date '+%Y%m%d'`
-FILE="/var/log/load/reboot_dir/test-rb_${F_DATE}.log"
+FILE="/home/load/reboot_dir/test-rb_${F_DATE}.log"
 
 num_line=`cat $FILE | wc -l`
 

@@ -25,6 +25,6 @@ MEASURE () {
 sleep 86400 & sleep 300 
 eval ${IPMI_VAL} & MEASURE
 
-cat /var/log/messages > /var/log/load/test-amdserver/aging/messages_`date +%Y%m%d`.log
+cat /var/log/messages > /home/load/aging/messages_`date +%Y%m%d`.log
 
 exit 0
