@@ -14,14 +14,14 @@ do
     log_time=`date '+%H%M'`
 
     echo "[YYYYMMDD] | [${log_time}]" > $tmp_file
-    ipmitool sdr list full | awk -F'|' -v OFS='|' '{print $1,$2}' >> $tmp_file
+    ipmitool sdr list full | awk -F'|' -v OFS='|' '{print $1,$2}' | sort >> $tmp_file
 
     if [ -s $file ]
     then
         # If the file is not empty (already the result is written),
         cp_file=`mktemp /home/load/ipmi_tmp.XXX`    
 
-	cat  $file > $cp_file
+	    cat  $file > $cp_file
         join -t '|' $cp_file $tmp_file > $file
 
         rm -f $cp_file
