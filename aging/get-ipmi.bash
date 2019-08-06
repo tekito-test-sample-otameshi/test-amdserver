@@ -27,6 +27,7 @@ do
         paste -d '|' $origin $cp_file > $file
 
         rm -f $cp_file
+        rm -f $origin
     else
         # If the file is empty (this is first wrriting),
         cat $tmp_file > $file
@@ -40,7 +41,6 @@ do
     fi
 
     rm -f $tmp_file
-    rm -f $origin
 
     sleep 600
 done
