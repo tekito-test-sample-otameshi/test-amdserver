@@ -20,11 +20,11 @@ do
     then
         # If the file is not empty (already the result is written),
         cp_file=`mktemp /home/load/ipmi_tmp.XXX`    
+        origin=`mktemp /home/load/ipmi_tmp.XXX`    
 
-	    #cat  $file > $cp_file
 	    awk -F'|' -v OFS='|' '{print $2}' $tmp_file > $cp_file
-        #join -t '|' $cp_file $tmp_file > $file
-        paste -d '|' $file $cp_file
+        cat $file > $origin
+        paste -d '|' $origin $cp_file > $file
 
         rm -f $cp_file
     else
