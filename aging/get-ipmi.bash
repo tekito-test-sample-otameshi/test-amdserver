@@ -14,7 +14,7 @@ do
     log_time=`date '+%H%M'`
 
     echo "[ITEM] | [${log_time}]" > $tmp_file
-    ipmitool sdr list full | awk -F'|' -v OFS='|' '{print $1,$2}' | sort >> $tmp_file
+    ipmitool sdr list full | sort | awk -F'|' -v OFS='|' '{print $1,$2}'  >> $tmp_file
 
     if [ -s $file ]
     then
