@@ -40,6 +40,7 @@ do
     fi
 
     rm -f $tmp_file
+    rm -f $origin
 
     sleep 600
 done
