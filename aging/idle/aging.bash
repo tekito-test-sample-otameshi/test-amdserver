@@ -14,7 +14,7 @@ IPMI_VAL="/var/tmp/load/test-amdserver/aging/get-ipmi.bash"
 MEASURE () {
     measure="/var/tmp/load/test-amdserver/aging/measure.bash"
 
-    for i in {1..2}
+    for i in {0..2}
     do
         eval ${measure}
         sleep 43200
