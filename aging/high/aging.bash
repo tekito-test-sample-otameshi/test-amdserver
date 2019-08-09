@@ -28,7 +28,7 @@ MEASURE () {
 }
 
 # main process
-LOAD_CMS & sleep 300 
+eval ${LOAD_CMS} & sleep 300 
 eval ${IPMI_VAL} & MEASURE
 
 cat /var/log/messages > /home/load/aging/messages_`date +%Y%m%d`.log
