@@ -8,7 +8,7 @@ num_line=`cat $FILE | wc -l`
 
 if [ -s $FILE ]
 then
-    if [ $num_line -ge 100 ]
+    if [ $num_line -ge 101 ]
     then
         echo "already rebooted 100 times. finished this script." >> $FILE
         exit 
