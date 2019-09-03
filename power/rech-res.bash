@@ -1,4 +1,4 @@
-#!/bin/bash -u
+#!/bin/bash -ux
 
 start=`date '+%F %R'`
 
