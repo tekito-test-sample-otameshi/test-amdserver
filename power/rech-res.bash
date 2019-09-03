@@ -22,7 +22,7 @@ then
     origin=`mktemp /var/log/load/origin.XXX`    
     cat $file > $origin
 
-    paste -d | $origin $cp_file > $file
+    paste -d '|' $origin $cp_file > $file
 
     if [ -s $file ]
     then
