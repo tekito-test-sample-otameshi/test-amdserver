@@ -16,13 +16,13 @@ if [ -s $file ]
 then
     # If the file is not empty (already the result is written),
     cp_file=`mktemp /var/log/load/cp_file.XXX`    
-    echo "[YYYYMMDD] | [${log_time}]" > $cp_file
+    echo "[${log_time}]" > $cp_file
     ipmitool sdr list full | awk -F'|' -v OFS='|' '{print $2}' >> $cp_file
 
     origin=`mktemp /var/log/load/origin.XXX`    
     cat $file > $origin
 
-    paste $origin $cp_file > $file
+    paste -d | $origin $cp_file > $file
 
     if [ -s $file ]
     then
